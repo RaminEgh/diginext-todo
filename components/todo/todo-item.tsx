@@ -19,7 +19,7 @@ const TodoItem = ({ item, toggleStateHandler, deleteHandler }: Props) => {
          {editable ? (
             <TodoInput todo={item.todo} id={item.id} onSave={onSave} />
          ) : (
-            <span className='text-wrap text-sm font-medium text-gray-900 truncate dark:text-white'>{item.todo}</span>
+            <span className={`text-wrap text-sm font-medium text-gray-900 truncate dark:text-white ${item.state === 'done' ? 'line-through' : ''}`}>{item.todo}</span>
          )}
 
          <div className='flex items-end justify-between'>
