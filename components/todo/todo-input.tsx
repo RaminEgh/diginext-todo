@@ -18,11 +18,12 @@ const TodoInput = (props: Props) => {
       const todoInputValue = (form.elements.namedItem('todo') as HTMLInputElement).value
 
       if (props.id) {
-         const todo = todoList.find((item) => item.id)
+         const clonedTodoList = [...todoList]
+         const todo = clonedTodoList.find((item) => item.id === props.id)
          if (todo && props.onSave) {
             todo.todo = todoInputValue
             todo.updatedAt = new Date()
-            setTodoList(todoList)
+            setTodoList(clonedTodoList)
             props.onSave()
          }
       } else {
